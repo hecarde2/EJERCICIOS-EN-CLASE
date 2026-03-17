@@ -1,30 +1,35 @@
+def mostrar_parqueadero():
+    print(parqueadero)
+
 espacios = 10
-carros_dentro = 5
-while True: 
-    print(f"carros actualmente adentro {carros_dentro}")
-    print("1. ingresar carro")
-    print("2. sacar carro")
-    print("3. salir de sistema")
-    
-    opcion = input("selecione una opcion")
+opcion = 1
+parqueadero = ["vacio"]* espacios
 
-    if opcion == "1":
-        if carros_dentro < espacios:
-            carros_dentro += 1
-            print("ingreso vehiculo")
-        else:
-            print("no hay espacios disponibles")
+while opcion < 4:
+    opcion = int(input(" escoge opcion : 1.ingresar , 2. retirar , 3.mostrar parqueadero , 4.salir"))
 
-    if opcion == "2":
-        if carros_dentro > 0:
-          carros_dentro -= 1
-          print("salio vehiculo")
+    if opcion == 1:
+        if "vacio" in parqueadero:
+            placa = input("ingresa la placa:  ")
+            print("carro ingresado")
         else:
-            print("espacios vacios para parquear")
-    
-    if opcion == "3":
-       print("saliendo del sistema")
-       break
-       
- 
+            print("parqueadero lleno")
+            
+        mostrar_parqueadero()
+    elif opcion == 2:
+        if parqueadero.count("VACIO") != 10:
+            placa = input("ingrese la placa a retirar")
+            if placa in parqueadero:
+                index = parqueadero.index(placa)
+                parqueadero[index] = "vacio"
+            else:
+                print("el carro no esta ingresado ")
+        else:
+            print("parqueadero esta vacio")
+        mostrar_parqueadero()
+    elif opcion == 3:
+        mostrar_parqueadero()
+with open("carrosdnetro.txt", "w")as archivo:
+    archivo.write(str(parqueadero))
+
 

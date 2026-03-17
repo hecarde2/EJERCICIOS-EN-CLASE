@@ -5,6 +5,15 @@ espacios = 10
 opcion = 1
 parqueadero = ["vacio"]* espacios
 
+with open("carrosdentro.txt", "a")as archivo:
+    archivo.write(str(parqueadero))
+
+with open("carrosdentro.txt", "r") as archivo:
+    contenido = archivo.read()
+    print(contenido)
+
+
+
 while opcion < 4:
     opcion = int(input(" escoge opcion : 1.ingresar , 2. retirar , 3.mostrar parqueadero , 4.salir"))
 
@@ -35,7 +44,6 @@ while opcion < 4:
     elif opcion == 3:
         mostrar_parqueadero()
 
-with open("carrosdentro.txt", "w")as archivo:
+with open("carrosdentro.txt", "a")as archivo:
     archivo.write(str(parqueadero))
-
-
+    
